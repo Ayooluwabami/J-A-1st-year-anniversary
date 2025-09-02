@@ -180,7 +180,7 @@ const galleryImages: GalleryImage[] = [
 const loveQuotes = [
   "Love is not just looking at each other, it's looking in the same direction.",
   "A successful marriage requires falling in love many times, always with the same person.",
-  "The best thing to hold onto in life is each other.",
+  "The best thing to hold onto in life is God and each other.",
   "Love is a friendship set to music.",
   "In all the world, there is no heart for me like yours.",
   "You are my today and all of my tomorrows.",
@@ -193,7 +193,7 @@ const loveQuotes = [
   "In your arms, I have found my home, my peace, my forever.",
   "Our love is a journey that started at forever and ends at never.",
   "With you, every moment is a treasure, every day a gift.",
-  "You are not just my love, you are my life, my heart, my soul.",
+  "Looking towards bright tomorrow with confidence because God has got us",
   "Together we are unstoppable, apart we are incomplete."
 ];
 
