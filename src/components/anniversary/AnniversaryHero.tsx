@@ -18,7 +18,7 @@ const heroImages: HeroImage[] = [
     backgroundSize: "cover",
     backgroundPosition: "center 30%",
     mobileBackgroundSize: "cover",
-    mobileBackgroundPosition: "center top"
+    mobileBackgroundPosition: "center left"
   },
   {
     src: "/uploads/3f4cc98c-f210-432a-b840-defc0e94841f.png",
@@ -58,7 +58,7 @@ const heroImages: HeroImage[] = [
     backgroundSize: "cover",
     backgroundPosition: "center 40%",
     mobileBackgroundSize: "cover",
-    mobileBackgroundPosition: "center 50%"
+    mobileBackgroundPosition: "center"
   },
   {
     src: "/uploads/ff894073-9fd3-42dd-9225-b7d005208dfa.png",
