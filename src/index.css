@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Anniversary Website Design System - Romantic & Elegant */
+
+@layer base {
+  :root {
+    /* Anniversary Color Palette - Deep Blues & Romantic Tones */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Deep Navy Blue - Primary */
+    --primary: 220 91% 15%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Romantic Coral/Pink */
+    --romantic: 350 80% 65%;
+    --romantic-foreground: 0 0% 100%;
+    
+    /* Elegant Gold */
+    --gold: 45 100% 51%;
+    --gold-foreground: 220 91% 15%;
+
+    /* Soft Cream */
+    --secondary: 40 23% 97%;
+    --secondary-foreground: 220 91% 15%;
+
+    --muted: 40 23% 97%;
+    --muted-foreground: 220 26% 45%;
+
+    --accent: 220 91% 95%;
+    --accent-foreground: 220 91% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 91% 15%;
+
+    --radius: 0.75rem;
+
+    /* Anniversary Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(350 80% 65%), hsl(320 60% 75%));
+    --gradient-elegant: linear-gradient(135deg, hsl(220 91% 15%), hsl(240 80% 25%));
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%), hsl(40 23% 97%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 51%), hsl(35 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 15%) 0%, hsl(240 80% 25%) 50%, hsl(350 80% 65%) 100%);
+
+    /* Romantic Shadows */
+    --shadow-romantic: 0 10px 30px -10px hsl(350 80% 65% / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(220 91% 15% / 0.2);
+    --shadow-soft: 0 4px 20px hsl(220 91% 15% / 0.1);
+    --shadow-glow: 0 0 40px hsl(350 80% 65% / 0.3);
+
+    /* Animations */
+    --transition-romantic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 91% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 91% 4%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 91% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 91% 15%;
+    
+    --romantic: 350 80% 65%;
+    --romantic-foreground: 0 0% 100%;
+    
+    --gold: 45 100% 51%;
+    --gold-foreground: 220 91% 4%;
+
+    --secondary: 220 50% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 50% 10%;
+    --muted-foreground: 220 26% 65%;
+
+    --accent: 220 50% 10%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 50% 15%;
+    --input: 220 50% 15%;
+    --ring: 350 80% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Anniversary Animation Classes */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+  }
+  
+  .animate-heart-beat {
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+  
+  .gradient-romantic {
+    background: var(--gradient-romantic);
+  }
+  
+  .gradient-elegant {
+    background: var(--gradient-elegant);
+  }
+  
+  .gradient-soft {
+    background: var(--gradient-soft);
+  }
+  
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-romantic {
+    box-shadow: var(--shadow-romantic);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-romantic {
+    transition: var(--transition-romantic);
+  }
+  
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Anniversary Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes heartFloat {
+  0% { 
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced scroll behavior */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--romantic));
+}
