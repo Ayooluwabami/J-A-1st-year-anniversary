@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { pool } from '../db/mysql';
+import { pool } from '../db/mysql.js';
 import { ResultSetHeader } from 'mysql2';
 
 const router = Router();
