@@ -145,16 +145,6 @@ const galleryImages: GalleryImage[] = [
     mobileBackgroundSize: "cover",
     mobileBackgroundPosition: "center"
   },
-  // {
-  //   src: "/uploads/e5128947-3a30-4065-b9a6-f3fab5867559.png",
-  //   alt: "Formal Colonnade",
-  //   title: "Sophisticated Love",
-  //   description: "Formal elegance meets timeless romance",
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center 30%",
-  //   mobileBackgroundSize: "cover",
-  //   mobileBackgroundPosition: "center"
-  // },
   {
     src: "/uploads/08a89549-5595-4f74-9a4c-5869bd12e105.png",
     alt: "Wedding Ceremony",
@@ -267,11 +257,11 @@ export const PhotoGallery = () => {
                 }}
               />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              {/* Overlay for desktop only */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent md:block hidden" />
 
-              {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8">
+              {/* Content Overlay - Desktop Only */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:block hidden">
                 <div className="glass-morphism rounded-2xl p-6">
                   <h3 className="text-2xl font-bold text-white mb-2 font-script">
                     {currentImage.title}
@@ -298,6 +288,21 @@ export const PhotoGallery = () => {
               >
                 <SkipForward className="w-6 h-6 text-white" />
               </button>
+            </div>
+
+            {/* Mobile Content Below Image */}
+            <div className="md:hidden mt-6 text-center">
+              <div className="glass-morphism rounded-2xl p-6 bg-white/10 backdrop-blur-md">
+                <h3 className="text-xl font-bold text-white mb-2 font-script">
+                  {currentImage.title}
+                </h3>
+                <p className="text-white/90 mb-4 text-sm">
+                  {currentImage.description}
+                </p>
+                <blockquote className="text-base text-white/80 italic font-serif border-l-4 border-romantic pl-4 text-left">
+                  "{currentQuote}"
+                </blockquote>
+              </div>
             </div>
 
             {/* Play/Pause Controls */}
