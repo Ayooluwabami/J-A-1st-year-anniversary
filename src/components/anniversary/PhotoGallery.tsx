@@ -193,7 +193,7 @@ const loveQuotes = [
   "In your arms, I have found my home, my peace, my forever.",
   "Our love is a journey that started at forever and ends at never.",
   "With you, every moment is a treasure, every day a gift.",
-  "Looking towards bright tomorrow with confidence because God has got us",
+  "Looking towards a bright tomorrow with confidence because God has got us",
   "Together we are unstoppable, apart we are incomplete."
 ];
 
