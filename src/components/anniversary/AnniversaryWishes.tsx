@@ -21,30 +21,6 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-// API functions for local backend
-const fetchWishesLocal = async (): Promise<Wish[]> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/wishes`);
-  if (!response.ok) throw new Error('Failed to fetch wishes');
-  return response.json();
-};
-
-const createWishLocal = async (wish: { name: string; message: string }): Promise<Wish> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/wishes`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(wish),
-  });
-  if (!response.ok) throw new Error('Failed to create wish');
-  return response.json();
-};
-
-const deleteWishLocal = async (id: string): Promise<void> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/wishes/${id}`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) throw new Error('Failed to delete wish');
-};
-
 // Supabase functions
 const fetchWishesSupabase = async (): Promise<Wish[]> => {
   const { data, error } = await supabase
@@ -52,7 +28,7 @@ const fetchWishesSupabase = async (): Promise<Wish[]> => {
     .select('*')
     .order('created_at', { ascending: false });
   if (error) throw new Error(error.message);
-  return data;
+  return data || [];
 };
 
 const createWishSupabase = async (wish: { name: string; message: string }): Promise<Wish> => {
@@ -75,19 +51,18 @@ const deleteWishSupabase = async (id: string): Promise<void> => {
 
 export const AnniversaryWishes = () => {
   const [newWish, setNewWish] = useState({ name: '', message: '' });
-  const [useSupabase, setUseSupabase] = useState(true); // Toggle between Supabase and local
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   // Fetch wishes
   const { data: wishes = [], isLoading, error } = useQuery({
-    queryKey: ['wishes', useSupabase],
-    queryFn: useSupabase ? fetchWishesSupabase : fetchWishesLocal,
+    queryKey: ['wishes'],
+    queryFn: fetchWishesSupabase,
   });
 
   // Create wish mutation
   const createMutation = useMutation({
-    mutationFn: useSupabase ? createWishSupabase : createWishLocal,
+    mutationFn: createWishSupabase,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['wishes'] });
       setNewWish({ name: '', message: '' });
@@ -96,7 +71,8 @@ export const AnniversaryWishes = () => {
         description: 'Thank you for your beautiful message!',
       });
     },
-    onError: () => {
+    onError: (error) => {
+      console.error('Error creating wish:', error);
       toast({
         title: 'Oops! Something went wrong',
         description: 'Please try again later.',
@@ -107,7 +83,7 @@ export const AnniversaryWishes = () => {
 
   // Delete wish mutation
   const deleteMutation = useMutation({
-    mutationFn: useSupabase ? deleteWishSupabase : deleteWishLocal,
+    mutationFn: deleteWishSupabase,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['wishes'] });
       toast({
@@ -115,7 +91,8 @@ export const AnniversaryWishes = () => {
         description: 'The message has been removed.',
       });
     },
-    onError: () => {
+    onError: (error) => {
+      console.error('Error deleting wish:', error);
       toast({
         title: 'Error deleting wish',
         description: 'Please try again later.',
@@ -167,23 +144,6 @@ export const AnniversaryWishes = () => {
             Share your love and best wishes for Joseph & Ayobami
           </p>
         </div>
-
-        {/* Backend Selection */}
-        {/* <div className="mb-8 p-4 bg-romantic/10 border border-romantic/20 rounded-2xl">
-          <div className="flex items-center gap-2 mb-2">
-            <Heart className="w-5 h-5 text-romantic" />
-            <h3 className="font-semibold text-romantic">Backend Integration</h3>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Using {useSupabase ? 'Supabase' : 'Local MySQL'} backend.{' '}
-            <button
-              onClick={() => setUseSupabase(!useSupabase)}
-              className="text-primary underline"
-            >
-              Switch to {useSupabase ? 'Local MySQL' : 'Supabase'}
-            </button>
-          </p>
-        </div> */}
 
         {/* Wish Form */}
         <Card className="mb-12 shadow-soft border-0">
@@ -250,7 +210,7 @@ export const AnniversaryWishes = () => {
             </div>
           ) : error ? (
             <div className="text-center py-12">
-              <p className="text-destructive text-lg">Failed to load wishes: {error.message}</p>
+              <p className="text-destructive text-lg">Failed to load wishes. Please check your Supabase configuration.</p>
             </div>
           ) : wishes.length === 0 ? (
             <div className="text-center py-12">
